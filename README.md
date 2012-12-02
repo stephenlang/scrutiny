@@ -60,14 +60,18 @@ The currently configurable options and thresholds are listed below:
 ### Implementation
 
 Download script to desired directory and set it to be executable:
+
+	# Linux based systems
 	cd /root
 	git clone https://github.com/stephenlang/scrutiny/linux/scrutiny.sh
-- or -
+
+	# FreeBSD based systems
 	git clone https://github.com/stephenlang/scrutiny/freebsd/scrutiny.sh
 	chmod 755 scrutiny.sh
 
 After configuring the tunables in the script (see above), create a cron job
 to execute the script every 10 minutes:
+
 	crontab -e
 	*/10 * * * * /root/scrutiny.sh
 
