@@ -24,10 +24,12 @@ information that can be gathered from tools like vmstat, iostat, etc?  Now
 you can draw better conclusions cause you will know what was happening at
 that single point in time.
 
-Welcome Scrutiny!  A tool based off of recap, rewriten to suit my own needs
-for portability between Red Hat, Debian, and FreeBSD based systems, as well
-as allowing for simple modifications of the metrics needed to best suit
-your own environment.
+Welcome Scrutiny!  A tool based off of
+[recap](https://github.com/rackspace/recap), rewriten to suit my own
+needs for portability between Red Hat, Debian, and FreeBSD based systems,
+as well as allowing for simple modifications of the metrics needed to best
+suit your own environment.
+
 
 ### Features
 
