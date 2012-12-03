@@ -66,11 +66,10 @@ Download script to desired directory and set it to be executable:
 	# Linux based systems
 	cd /root
 	git clone https://github.com/stephenlang/scrutiny/linux/scrutiny.sh
-
+	
 	# FreeBSD based systems
 	cd /root
 	git clone https://github.com/stephenlang/scrutiny/freebsd/scrutiny.sh
-	chmod 755 scrutiny.sh
 
 After configuring the tunables in the script (see above), create a cron job
 to execute the script every 10 minutes:
