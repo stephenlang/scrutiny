@@ -61,7 +61,7 @@ if [ ! `whoami` = root ]; then
 	exit 1
 fi
 
-if [ ! -f /usr/local/bin/lynx ]; then
+if [ ! -f /usr/bin/lynx ]; then
 	echo "This script requires lynx to be installed if"
 	echo "apache_log=on.  Please install lynx or disable"
 	echo "apache_log."
