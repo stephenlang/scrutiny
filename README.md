@@ -68,6 +68,7 @@ Download script to desired directory and set it to be executable:
 	git clone https://github.com/stephenlang/scrutiny/linux/scrutiny.sh
 
 	# FreeBSD based systems
+	cd /root
 	git clone https://github.com/stephenlang/scrutiny/freebsd/scrutiny.sh
 	chmod 755 scrutiny.sh
 
