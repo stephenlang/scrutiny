@@ -65,17 +65,24 @@ Download script to desired directory and set it to be executable:
 
 	# Linux based systems
 	cd /root
-	git clone https://github.com/stephenlang/scrutiny/linux/scrutiny.sh
+	git clone https://github.com/stephenlang/scrutiny
+	chmod 775 /root/scrutiny/linux/scrutiny.sh
 	
 	# FreeBSD based systems
 	cd /root
 	git clone https://github.com/stephenlang/scrutiny/freebsd/scrutiny.sh
+	chmod 775 /root/scrutiny/freebsd/scrutiny.sh
 
 After configuring the tunables in the script (see above), create a cron job
 to execute the script every 10 minutes:
 
+	# Linux based systems
 	crontab -e
-	*/10 * * * * /root/scrutiny.sh
+	*/10 * * * * /root/scrutiny/linux/scrutiny.sh
+
+	# FreeBSD based systems
+	crontab -e
+	*/10 * * * * /root/scrutiny/freebsd/scrutiny.sh
 
 Now days later, if a problem was reported during the overnight and you were
 able to narrow it down to a specifc timeframe, you will be able to look at
