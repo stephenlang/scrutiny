@@ -61,25 +61,36 @@ if [ ! `whoami` = root ]; then
 	exit 1
 fi
 
-if [ ! -f /usr/bin/lynx ]; then
-	echo "This script requires lynx to be installed if"
-	echo "apache_log=on.  Please install lynx or disable"
-	echo "apache_log."
-	exit 1
+if [ $apache_log = on ]; then
+	if [ ! -f /usr/bin/lynx ]; then
+		echo "This script requires lynx to be installed if"
+		echo "apache_log=on.  Please install lynx or disable"
+		echo "apache_log."
+		exit 1
+	fi
 fi
 
-if [ -d /tmp/scrutiny.lock ]; then
-	echo "Lock file exists.  Please confirm that scrutiny"
-	echo "is not still running.  If all is well, manually"
-	echo "remove lock by running:  rm -rf /tmp/scrutiny.lock"
-	exit 1
-else
-	/bin/mkdir /tmp/scrutiny.lock
+if [ $resource_log = on ]; then
+	if [ ! -f /usr/bin/iostat ]; then
+        	echo "This script requires iostat to be installed if"
+        	echo "resource_log=on.  Please install sysstat which should"
+        	echo "contain this package, or disable resource_log."
+        	exit 1
+	fi
 fi
 
 if [ ! -d $basedir ]; then
 	mkdir $basedir
 	chmod 700 $basedir
+fi
+
+if [ -d /tmp/scrutiny.lock ]; then
+        echo "Lock file exists.  Please confirm that scrutiny"
+        echo "is not still running.  If all is well, manually"
+        echo "remove lock by running:  rm -rf /tmp/scrutiny.lock"
+        exit 1
+else   
+        /bin/mkdir /tmp/scrutiny.lock
 fi
 
 
