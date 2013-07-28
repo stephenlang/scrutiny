@@ -39,6 +39,7 @@ resource_log=on
 network_log=on
 mysql_log=on
 apache_log=on
+nginx_status=off
 
 
 # Retention Days
@@ -195,6 +196,22 @@ Apache Snapshot
 - Description:  Shows what Apache was currently doing
 - Command:  apachectl fullstatus
 `apachectl fullstatus`
+
+EOF
+fi
+
+
+# Nginx
+
+if [ $nginx_log = on ]; then
+cat << EOF >> $basedir/nginx.log.$date
+---------------------------------------------------------------
+Apache Snapshot
+---------------------------------------------------------------
+
+- Description:  Shows what Apache was currently doing
+- Command:  lynx -dump http://localhost/nginx_status
+`lynx -dump http://localhost/nginx_status`
 
 EOF
 fi

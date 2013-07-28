@@ -39,6 +39,7 @@ resource_log=on
 network_log=on
 mysql_log=on
 apache_log=on
+nginx_log=off
 
 
 # Retention Days
@@ -77,6 +78,15 @@ if [ $resource_log = on ]; then
         	echo "contain this package, or disable resource_log."
         	exit 1
 	fi
+fi
+
+if [ $nginx_log = on ]; then
+        if [ ! -f /usr/bin/lynx ]; then
+                echo "This script requires lynx to be installed if"
+                echo "nginx_log=on.  Please install lynx or disable"
+                echo "nginx_log."
+                exit 1
+        fi
 fi
 
 if [ ! -d $basedir ]; then
@@ -206,6 +216,22 @@ Apache Snapshot
 - Description:  Shows what Apache was currently doing
 - Command:  lynx -dump http://localhost/server-status
 `lynx -dump http://localhost/server-status`
+
+EOF
+fi
+
+
+# Nginx
+
+if [ $nginx_log = on ]; then
+cat << EOF >> $basedir/nginx.log.$date
+---------------------------------------------------------------
+Apache Snapshot
+---------------------------------------------------------------
+
+- Description:  Shows what Apache was currently doing
+- Command:  lynx -dump http://localhost/nginx_status
+`lynx -dump http://localhost/nginx_status`
 
 EOF
 fi
