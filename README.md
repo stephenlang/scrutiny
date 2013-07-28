@@ -51,6 +51,7 @@ The currently configurable options and thresholds are listed below:
 	network_log=on
 	mysql_log=on
 	apache_log=on
+	nginx_log=off
 
 	# Retention Days
 	retension=2
