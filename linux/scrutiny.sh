@@ -43,7 +43,7 @@ nginx_log=off
 
 
 # Retention Days
-retension=2
+retention=2
 
 
 # Logs
@@ -94,19 +94,19 @@ if [ ! -d $basedir ]; then
 	chmod 700 $basedir
 fi
 
-if [ -d /tmp/scrutiny.lock ]; then
+if [ -d $lockdir ]; then
         echo "Lock file exists.  Please confirm that scrutiny"
         echo "is not still running.  If all is well, manually"
-        echo "remove lock by running:  rm -rf /tmp/scrutiny.lock"
+        echo "remove lock by running:  rm -rf $lockdir"
         exit 1
 else   
-        /bin/mkdir /tmp/scrutiny.lock
+        /bin/mkdir $lockdir
 fi
 
 
 # Clear logs
 
-find $basedir/* -mtime +$retension -exec rm {} \;
+find $basedir/* -mtime +$retention -exec rm {} \;
 
 
 # Process Information
@@ -226,10 +226,10 @@ fi
 if [ $nginx_log = on ]; then
 cat << EOF >> $basedir/nginx.log.$date
 ---------------------------------------------------------------
-Apache Snapshot
+Nginx Snapshot
 ---------------------------------------------------------------
 
-- Description:  Shows what Apache was currently doing
+- Description:  Shows what Nginx was currently doing
 - Command:  lynx -dump http://localhost/nginx_status
 `lynx -dump http://localhost/nginx_status`
 
@@ -238,5 +238,5 @@ fi
 
 
 # Clear Lock
-rm -rf /tmp/scrutiny.lock
+rm -rf $lockdir
 

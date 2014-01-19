@@ -25,7 +25,7 @@ you can draw better conclusions cause you will know what was happening at
 that single point in time.
 
 Welcome Scrutiny!  A tool based off of
-[recap](https://github.com/rackspace/recap), rewriten to suit my own
+[recap](https://github.com/rackerlabs/recap), rewriten to suit my own
 needs for portability between Red Hat, Debian, and FreeBSD based systems,
 as well as allowing for simple modifications of the metrics needed to best
 suit your own environment.
@@ -67,12 +67,12 @@ Download script to desired directory and set it to be executable:
 	# Linux based systems
 	cd /root
 	git clone https://github.com/stephenlang/scrutiny
-	chmod 775 /root/scrutiny/linux/scrutiny.sh
+	chmod 755 /root/scrutiny/linux/scrutiny.sh
 	
 	# FreeBSD based systems
 	cd /root
 	git clone https://github.com/stephenlang/scrutiny/freebsd/scrutiny.sh
-	chmod 775 /root/scrutiny/freebsd/scrutiny.sh
+	chmod 755 /root/scrutiny/freebsd/scrutiny.sh
 
 After configuring the tunables in the script (see above), create a cron job
 to execute the script every 10 minutes:
