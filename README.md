@@ -54,7 +54,7 @@ The currently configurable options and thresholds are listed below:
 	nginx_log=off
 
 	# Retention Days
-	retension=2
+	retention=2
 
 	# Logs
 	basedir=/var/log/scrutiny
